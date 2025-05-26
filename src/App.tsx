@@ -17,12 +17,12 @@ function App() {
   // const [title, setTitle] = useState('');
   // const [description, setDescription] = useState('');
 
-  function handleAddGoals() {
+  function handleAddGoals(goal: string, summary: string) {
     setGoals((prev) => {
       const newGoal: CourseGoal = {
         id: Math.random(),
-        title: 'second chapter',
-        description: 'second chapters description'
+        title: goal,
+        description: summary
       }
       return [...prev, newGoal]
     })
@@ -38,7 +38,7 @@ function App() {
         <Header img={{src: goalImg, alt: 'goal image'}}>
           <h1>Welcome to your goals</h1>
         </Header>
-        <NewGoal />
+        <NewGoal onAddGoal={handleAddGoals} />
         {/* <input type='text' value={title} onChange={(e)=> setTitle(e.target.value)} />
         <input type='text' value={description} onChange={(e) => setDescription(e.target.value)} /> */}
         <CourseGoalList goals={goals} onDelete={handleDeleteGoal} />
